@@ -30,7 +30,7 @@ Input Commands:
 
 -m Genomic feature(s) to be used
 
-* Specifies the genomic features incorporated into final least squares distance. Default is all. If only a subset are desired, the user must specify each: CAI, ENC, VFOLD, MFOLD, DN, CPB separated by space. Two options are given for assessing free energy of RNA folding as described below. UNAfold is more efficient, but only commercially available. MFold is free. The user should specify which folding algorithm to use (if any) in the -m command.
+* Specifies the genomic features incorporated into final least squares distance. Default is all. If only a subset are desired, the user must specify each: CAI, ENC, VFOLD, UFOLD, DN, CPB separated by space. Two options are given for assessing free energy of RNA folding as described below. UNAfold is more efficient, but only commercially available. ViennaRNA Fold is free. The user should specify which folding algorithm to use (if any) in the -m command.
 
 -g Graphics
 
