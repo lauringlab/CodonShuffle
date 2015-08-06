@@ -1627,7 +1627,7 @@ if args.graphics:
 if 'CAI' in args.modules or 'all' in args.modules:
     #Run CAI and read result table
     cainame = seq_name[1:-1]+'_'+args.random_type+'.cai'
-    call(["./EMBOSS/emboss/cai", "-seqall="+filename, "-outfile="+cainame, "-cfile=Eyeast_cai.cut"]) #Insert path before cai in this line (CAI)
+    call(["./lib/EMBOSS-6.6.0/emboss/cai", "-seqall="+filename, "-outfile="+cainame, "-cfile=Eyeast_cai.cut"]) #Insert path before cai in this line (CAI)
     u_cols = ['a', 'sequence', 'b', 'cai']
     cai_table = pandas.read_csv(cainame, sep=' ', names=u_cols)
     cai_table = cai_table.drop('a', 1)
@@ -1651,7 +1651,7 @@ if 'CAI' in args.modules or 'all' in args.modules:
 
 if 'ENC' in args.modules or 'all' in args.modules:
     #  Run ENC and result table
-    call(["./codonW/codonw", filename, "-enc", "-nomenu", "-nowarn", "-silent"]) #Insert path before codonw in this line (ENC)
+    call(["./lib/codonW/codonw", filename, "-enc", "-nomenu", "-nowarn", "-silent"]) #Insert path before codonw in this line (ENC)
     enc_filename = seq_name[1:-1]+'_'+args.random_type+'.out'
     enc_table = pandas.read_csv(enc_filename, sep='\t')
     enc_table = enc_table.drop('Unnamed: 2',1)

@@ -1,0 +1,15 @@
+##gff-version 3
+##sequence-region Original_P1 1 1833
+#!Date 2014-10-16
+#!Type DNA
+#!Source-version EMBOSS 6.6.0.0
+Original_P1	cpgplot	sequence_feature	231	457	.	+	.	ID=Original_P1.1
+Original_P1	cpgplot	sequence_feature	1566	1833	.	+	.	ID=Original_P1.2
+##gff-version 3
+##sequence-region replicate_1 1 2454
+#!Date 2014-10-16
+#!Type DNA
+#!Source-version EMBOSS 6.6.0.0
+replicate_1	cpgplot	sequence_feature	241	591	.	+	.	ID=replicate_1.1
+replicate_1	cpgplot	sequence_feature	1640	2031	.	+	.	ID=replicate_1.2
+replicate_1	cpgplot	sequence_feature	2162	2454	.	+	.	ID=replicate_1.3

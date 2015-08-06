@@ -1,0 +1,35 @@
+xmltok.lo: xmltok.c \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include/stddef.h \
+  expat_config.h ../../ajax/core/config.h expat_external.h internal.h \
+  xmltok.h nametab.h xmltok_impl.h ascii.h xmltok_impl.c asciitab.h \
+  utf8tab.h iasciitab.h latin1tab.h xmltok_ns.c
+
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include/stddef.h:
+
+expat_config.h:
+
+../../ajax/core/config.h:
+
+expat_external.h:
+
+internal.h:
+
+xmltok.h:
+
+nametab.h:
+
+xmltok_impl.h:
+
+ascii.h:
+
+xmltok_impl.c:
+
+asciitab.h:
+
+utf8tab.h:
+
+iasciitab.h:
+
+latin1tab.h:
+
+xmltok_ns.c:

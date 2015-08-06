@@ -1,0 +1,5 @@
+pdf.lo: pdf.c plDevs.h ../ajax/core/config.h
+
+plDevs.h:
+
+../ajax/core/config.h:
