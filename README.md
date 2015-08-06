@@ -7,12 +7,13 @@ This package can be used to generate and analyze permuted sequences of an open r
 ___
 ###Instructions###
 
-1. Run the python file (CodonShuffle.py)
-2. Select sequence file (input_file.fas)  
-3. Select a single permutation script to use (3n, dn23, dn31, dn231)
-4. Select desired number of permuted sequences
-5. Select the genomic feature to be evaluated 
-6. Output graphs with the analysis
+1. Download files and folders
+2. Run the python file (CodonShuffle.py)
+3. Select sequence file (input_file.fas)  
+4. Select a single permutation script to use (3n, dn23, dn31, dn231)
+5. Select desired number of permuted sequences
+6. Select the genomic feature to be evaluated 
+7. Output graphs with the analysis
 
 Input Commands:
 
