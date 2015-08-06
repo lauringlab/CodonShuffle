@@ -88,7 +88,7 @@ ___
 
 CodonShuffle.py will analyze the permuted sequences for a number of genomic features using the programs or scripts below. We have provided them separately should users decide to perform a separate analysis on their data. 
 
-* Minimum free energy, calculated with _UNAfold_ 
+* Minimum free energy, calculated with _UNAfold_ or _ViennaRNA_
 
 * Effective number of codon, calculated with _Codonw_
 
