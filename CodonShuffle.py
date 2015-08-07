@@ -1684,13 +1684,18 @@ if 'VFOLD' in args.modules or 'all' in args.modules:
 
     fold_tb = open(foldname, "r").read().split()
     fold_file=open(filename+'fold_table_mfe.txt', 'w')
+    fold_mfe=[]
     for i in range(3, len(fold_tb)-3, 4):
-        fold_mfe = fold_tb[3]+'\n'+fold_tb[i+4]
-        fold_file.write(str(fold_mfe)+'\n')
+        fold_mfe.append(fold_tb[i])
+        #fold_file.write(str(fold_mfe)+'\n')
+    
+    for i in range(0,len(fold_mfe)):
+        fold_file.write(fold_mfe[i]+"\n")
     fold_file.close()
     
     fold_table = pandas.read_csv(filename+'fold_table_mfe.txt', names=['mfe'])
     fold_table['mfe'] = fold_table['mfe'].map(lambda x: x.lstrip('(').rstrip(')'))
+    fold_table['mfe']=fold_table.apply(lambda row: float(row['mfe']), axis=1)
     fold_table_z = ((fold_table['mfe'] - fold_table['mfe'].mean()) / fold_table['mfe'].std())
     fold_table_z_ls = (fold_table_z-fold_table_z[0])**2
 
