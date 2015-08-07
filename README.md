@@ -8,7 +8,7 @@ ___
 ###Instructions###
 
 1. Download files and folders
-2. Install dependencies by running the instal script
+2. Install dependencies by running the install_dependencies.py script
 3. Run the python file (CodonShuffle.py)
 3. Select sequence file (input_file.fas)  
 4. Select a single permutation script to use (3n, dn23, dn31, dn231)
@@ -65,6 +65,7 @@ $python CodonShuffle.py -i Poliovirus_1_Mahoney_P1.fas -s dn23 -r 100 -m CAI ENC
 * UNAfold (unless user decides to use a free package for this analysis, see above)
 * ViennaRNA
 
+All dependencies will be installed by first running the install script. Simply open a terminal window and from the parent directory, type "sudo python install_dependencies.py" You will be prompted to enter your administrator password. Once installed, you will be able to run CodonShuffle. Additional required dependencies (i.e. CodonW and Emboss are installed by the main CodonShuffle.py command).
 
  
 
