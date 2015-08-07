@@ -8,7 +8,8 @@ ___
 ###Instructions###
 
 1. Download files and folders
-2. Run the python file (CodonShuffle.py)
+2. Install dependencies by running the instal script
+3. Run the python file (CodonShuffle.py)
 3. Select sequence file (input_file.fas)  
 4. Select a single permutation script to use (3n, dn23, dn31, dn231)
 5. Select desired number of permuted sequences
