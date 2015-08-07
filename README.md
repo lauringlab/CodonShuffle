@@ -57,8 +57,8 @@ $python CodonShuffle.py -i Poliovirus_1_Mahoney_P1.fas -s dn23 -r 100 -m CAI ENC
 
 
 ### Required third-party resources ###
-* Python (Package: pyRserve)
-* R (Package: Plyr, Rserve and Seqinr) 
+* Python (Package: Numpy, Scipy, Matplotlib, Pandas, Statsmodels, Patsy, Bio and Ggplot)
+* R (Package: Plyr and Seqinr) 
 * Emboss 
 * Codonw
 * UNAfold (unless user decides to use a free package for this analysis, see above)
