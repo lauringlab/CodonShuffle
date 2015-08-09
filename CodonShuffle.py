@@ -1701,7 +1701,7 @@ if 'VFOLD' in args.modules or 'all' in args.modules:
         
     if args.graphics:
         fold_graphname = seq_name[1:-1]+'_'+args.random_type+'.fold.pdf'
-        fold_table = pandas.read_csv(mfename, names=['mfe'])
+#        fold_table = pandas.read_csv(mfename, names=['mfe'])
         fold_graph = ggplot(fold_table, aes('mfe'))+geom_density() +labs("MFE","Frequency")+ geom_vline(xintercept = [fold_table['mfe'].iloc[0]] , colour="red", linetype = "dashed") +ggtitle(seq_name[1:-1]+'_'+args.random_type+' (FOLD)') #Get the name of the script
         ggsave(fold_graph, fold_graphname)
 
