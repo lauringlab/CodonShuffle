@@ -1677,7 +1677,7 @@ if 'VFOLD' in args.modules or 'all' in args.modules:
     mfename = seq_name[1:-1]+'_'+args.random_type+'.mfe'
     i = open(filename, "r")
     o = open(foldname, "w")
-    call(["RNAfold", "--noPS"], stdin=i, stdout=o) #Insert path before RNAfold in this line (MFOLD)
+    call(["./lib/ViennaRNA-2.1.9/Progs/RNAfold", "--noPS"], stdin=i, stdout=o) #Insert path before RNAfold in this line (MFOLD)
     i.close
     o.close
 #    os.system("cat Poliovirus_1_Mahoney_P1_dn23.fold | sed 'N;N;s/\\n/ /g' | cut -f 4 -d ' ' | tr -d '()' > " + mfename)
@@ -1691,6 +1691,7 @@ if 'VFOLD' in args.modules or 'all' in args.modules:
     
     fold_table = pandas.read_csv(filename+'fold_table_mfe.txt', names=['mfe'])
     fold_table['mfe'] = fold_table['mfe'].map(lambda x: x.lstrip('(').rstrip(')'))
+    fold_table['mfe']=fold_table.apply(lambda row: float(row['mfe']), axis=1)
     fold_table_z = ((fold_table['mfe'] - fold_table['mfe'].mean()) / fold_table['mfe'].std())
     fold_table_z_ls = (fold_table_z-fold_table_z[0])**2
 
