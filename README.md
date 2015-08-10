@@ -60,10 +60,11 @@ $python CodonShuffle.py -i Poliovirus_1_Mahoney_P1.fas -s dn23 -r 100 -m CAI ENC
 ### Required third-party resources ###
 * Python (Package: Numpy, Scipy, Matplotlib, Pandas, Statsmodels, Patsy, Bio and Ggplot)
 * R (Package: Plyr and Seqinr) 
-* Emboss 
-* Codonw
-* UNAfold (unless user decides to use a free package for this analysis, see above)
-* ViennaRNA
+* <a href="http://emboss.sourceforge.net/" target="_blank">Emboss</a>  
+* <a href="http://codonw.sourceforge.net/" target="_blank">Codonw</a> 
+* <a href="http://mfold.rna.albany.edu/" target="_blank">UNAfold</a> (unless user decides to use a free package for this analysis, see above)
+* <a href="http://www.tbi.univie.ac.at/RNA/" target="_blank">ViennaRNA</a> 
+* <a href="https://pip.pypa.io/en/latest/quickstart.html" target="_blank">Pip</a>
 
 All dependencies will be installed by first running the install script. Simply open a terminal window and from the parent directory, type "sudo python install_dependencies.py" You will be prompted to enter your administrator password. Once installed, you will be able to run CodonShuffle. Additional required dependencies (i.e. CodonW and Emboss are installed by the main CodonShuffle.py command).
 
