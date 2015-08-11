@@ -1627,7 +1627,7 @@ if args.graphics:
 if 'CAI' in args.modules or 'all' in args.modules:
     #Run CAI and read result table
     cainame = seq_name[1:-1]+'_'+args.random_type+'.cai'
-    call(["./lib/EMBOSS-6.6.0/emboss/cai", "-seqall="+filename, "-outfile="+cainame, "-cfile=Eyeast_cai.cut"]) #Insert path before cai in this line (CAI)
+    call(["./lib/EMBOSS-6.6.0/emboss/cai", "-seqall="+filename, "-outfile="+cainame, "-cfile=Ehuman.cut"]) #Insert path before cai in this line (CAI)
     u_cols = ['a', 'sequence', 'b', 'cai']
     cai_table = pandas.read_csv(cainame, sep=' ', names=u_cols)
     cai_table = cai_table.drop('a', 1)
