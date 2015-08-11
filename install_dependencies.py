@@ -1,4 +1,5 @@
 import subprocess
+import os
 subprocess.call(['pip', 'install', 'numpy']) # Install Numpy
 subprocess.call(['pip', 'install', 'scipy']) # Install Scipy
 subprocess.call(['pip', 'install', 'matplotlib']) # Install Matplotlib
