@@ -44,7 +44,15 @@ Input Commands:
 
 Outputs:
 
-* Graphs of distribution of values for genomic features of permuted sequences (for example, ENCgraph.pdf)
+* Graphs of distribution of values for genomic features of permuted sequences. Each file will have the input sequence and permutation algorithm in the title with the following suffixes:
+_dn.pdf (graph of dinucleotide frequencies for permuted sequences)
+_dnls.pdf (graph of aggregate least squares value of overall dinucleotide bias for input and permuted sequences)
+fas.hamming.pdf (graph of hamming distance between permuted sequences and wild type)
+fasfinal_graph.pdf (graph of hamming distance vs. least squares distance for all permuted sequences)
+.fold.pdf (graph of minimum free energy of RNA folding for permuted sequences)
+.out.enc.pdf (graph of ENC for input and permuted sequences)
+.cai.pdf (graph of CAI for input and permuted sequences)
+
 
 * Graph showing Hamming distance versus Least Squares distance for all permuted sequences
 
