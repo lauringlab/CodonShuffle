@@ -63,14 +63,22 @@ Outputs:
 
 * Table with hamming distance, values for each genomic feature, aggregate least squares distance with suffix _final_table.txt. Headers are as follows:
 
-    sequence number (input sequence is 0)
+	sequence number (input sequence is 0)
+	
 	Distance.ls (overall least squares distance)
+	
 	Nucleotide_difference
+	
 	CPB (codon pair bias)
+	
 	DN_least_square (aggregate least squares value for 16 dinucleotide frequencies)
+	
 	DN..AA. etc. (individual dinucleotide frequency measurements)
+	
 	VFOLD..mfe (minimum free energy from Vienna RNA)
+	
 	ENC (effective number of codons)
+	
 	CAI (codon adaptive index)
 
 * Multiple sequence fasta file with suffix .fas contains all permuted sequences with sequence identifiers (for example, replicate_1)
@@ -78,14 +86,23 @@ Outputs:
 * Additional files contain intermediate data output during the CodonShuffle run.
 
     _least_square.txt, least square values for input and permuted sequences
+    
     .blk, file with codon usage frequencies for input and permuted sequences
+    
     .cpb, codon pair bias scores for input permuted sequences
+    
     .dn, frequencies for all 16 dinucleotides for input and permuted sequences
+    
     .dnls, aggregate least squares value of overall dinucleotide bias for input and permuted sequences
+    
     fas_distance_table.txt, hamming distance in nucleotides between each permuted sequence and the input
+    
     .fasfold_table_mfe.txt, minimum free energies of RNA folding for permuted sequences
+    
     .out, effective number of codon values for input and permuted sequences
+    
     new_table_final_graph, tab delimited text file of least squares  and Hamming distance for input and all permuted sequences
+    
     .cai, codon adaptive index values for input and permuted sequences
 
 Example Usage:
