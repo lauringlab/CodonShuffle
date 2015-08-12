@@ -57,6 +57,8 @@ Outputs:
     .out.enc.pdf (graph of ENC for input and permuted sequences)
 
     .cai.pdf (graph of CAI for input and permuted sequences)
+    
+    .cpb.pdf (graph of CPB for input and permuted sequences)
 
 
 * Graph showing Hamming distance versus Least Squares distance for all permuted sequences with suffix fasfinal_graph.pdf
@@ -101,7 +103,7 @@ Outputs:
     
     .out, effective number of codon values for input and permuted sequences
     
-    new_table_final_graph, tab delimited text file of least squares  and Hamming distance for input and all permuted sequences
+    new_table_final_graph, tab delimited text file of least squares and Hamming distance for input and all permuted sequences
     
     .cai, codon adaptive index values for input and permuted sequences
 
