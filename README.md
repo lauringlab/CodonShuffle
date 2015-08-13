@@ -77,7 +77,7 @@ Outputs:
 	
 	DN..AA. etc. (individual dinucleotide frequency measurements)
 	
-	VFOLD..mfe (minimum free energy from Vienna RNA)
+	VFOLD.mfe (minimum free energy from Vienna RNA)
 	
 	ENC (effective number of codons)
 	
@@ -174,7 +174,7 @@ Compute minimum free energy of an RNA sequence. In our implementation, we used U
 * Effective number of codons, calculated with Emboss
 
 Quantifies the codon usage of a sequence. This measure of synonymous codon usage bias, the 'effective number of codons used in a gene', can be calculated from codon usage data alone, and is independent of gene length and amino acid (aa) composition. It can range from 20, in the case of extreme bias where one codon is exclusively used for each aa, to 61 when the use of alternative
-synonymous codons is equally likely.
+synonymous codons are equally likely.
 
 * Codon adaptation index
 
