@@ -1926,7 +1926,7 @@ new_table.to_csv(new_table_name, sep="\t")
 #final_table=final_table.append(new_nuc_distance_table['Nucleotide_difference'])
 final_table.insert(1, "Nucleotide_difference", new_nuc_distance_table['Nucleotide_difference'])
 
-final_tb_name = seq_name[1:-1]+'_'+args.random_type+'_final_table.csv'
+final_tb_name = seq_name[1:-1]+'_'+args.random_type+'_final_table.txt'
 final_table.to_csv(final_tb_name, sep='\t')
 
 if args.graphics:
