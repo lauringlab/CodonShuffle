@@ -32,7 +32,7 @@ Input Commands:
 
 -m Genomic feature(s) to be used
 
-* Specifies the genomic features incorporated into final least squares distance. Default is all. If only a subset are desired, the user must specify each: CAI, ENC, VFOLD, UFOLD, DN, CPB separated by space. Two options are given for assessing free energy of RNA folding as described below. UNAfold is more efficient, but only commercially available. ViennaRNA Fold is free. The user should specify which folding algorithm to use (if any) in the -m command.
+* Specifies the genomic features incorporated into final least squares distance. Default is all. If only a subset are desired, the user must specify each: CAI, ENC, VFOLD, UFOLD, DN, CPB separated by spaces. Two options are given for assessing free energy of RNA folding as described below. UNAfold is more efficient, but only commercially available. ViennaRNA Fold is free. The user should specify which folding algorithm to use (if any) in the -m command.
 
 -g Graphics
 
@@ -91,7 +91,7 @@ Outputs:
     
     .blk, file with codon usage frequencies for input and permuted sequences
     
-    .cpb, codon pair bias scores for input permuted sequences
+    .cpb, codon pair bias scores for input and permuted sequences
     
     .dn, frequencies for all 16 dinucleotides for input and permuted sequences
     
@@ -183,7 +183,7 @@ Quantifies the codon usage of a sequence. CAI measures the deviation of a given 
 
 * Codon pair bias
 
-Quantifies the distribution of the codon pair in the sequence.CPB is defined as the arithmetic mean of the individual codon-pair scores within the sequence. Codon-pair score is defined as the natural log of the quotient of the observed occurrences of a given codon-pair divided by the expected number of occurrences of the codon-pair found.
+Quantifies the distribution of the codon pair in the sequence. CPB is defined as the arithmetic mean of the individual codon-pair scores within the sequence. Codon-pair score is defined as the natural log of the quotient of the observed occurrences of a given codon-pair divided by the expected number of occurrences of the codon-pair found.
 
 
 * Nucleotide distance
