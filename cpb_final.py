@@ -49,10 +49,9 @@ cps_human = cps_human.drop('Observed/Expected', 1)
 cps_human = cps_human.sort(['CodonPair'], ascending=[True])
 
 
+for nuc_rec in SeqIO.parse("dn23.fas", "fasta"):
+    dicodons = [str(nuc_rec.seq[i:i+6]) for i in range(0,len(nuc_rec.seq)-3, 3)]
 
-
-for nuc_rec in SeqIO.parse("Seq.fas", "fasta"):
-    dicodons = [str(nuc_rec.seq[i:i+6]) for i in range(0,len(nuc_rec.seq)-6,6)]
 
     dicodon_counts = Counter(dicodons)
 
@@ -75,7 +74,7 @@ for nuc_rec in SeqIO.parse("Seq.fas", "fasta"):
         cps_tb_final['CPS'] = cps_tb_final['CPS'].replace({',':'.'}, regex=True)
         cps_tb_final['CPS'] = cps_tb_final['CPS'].astype(float)
         cps_tb_final['result'] = cps_tb_final.CPS * cps_tb_final.Obs
-    cpb = sum(cps_tb_final['result'])/len(cps_tb_final)
+    cpb = sum(cps_tb_final['result'])/sum(cps_tb_final['Obs'])
     print str(cpb)
     cpb_file.write(str(cpb)+"\n")
 cpb_file.close()
