@@ -1836,10 +1836,20 @@ if 'CPB' in args.modules or 'all' in args.modules:
     cpbname = seq_name[1:-1]+'_'+args.random_type+'.cpb'
     cpb_file=open(cpbname,'w')
     
+    #Human CPS from Coleman et al 2008, pmid: 18583614
+    cps_human = pandas.read_csv("Coleman_CPS.csv", sep=';')
+    #Delete column 
+    cps_human = cps_human.drop('Aapair', 1)
+    cps_human = cps_human.drop('Expected', 1)
+    cps_human = cps_human.drop('Observed', 1)
+    cps_human = cps_human.drop('Observed/Expected', 1)
+    cps_human = cps_human.sort(['CodonPair'], ascending=[True])
+
+    
     for nuc_rec in SeqIO.parse(filename, "fasta"):
         prot_rec = make_protein_record(nuc_rec)
         codons = [str(nuc_rec.seq[i:i+3]) for i in range(0,len(nuc_rec.seq)-3,3)]
-        dicodons = [str(nuc_rec.seq[i:i+6]) for i in range(0,len(nuc_rec.seq)-6,6)]
+        dicodons = [str(nuc_rec.seq[i:i+6]) for i in range(0,len(nuc_rec.seq)-3,3)]
         aas = [str(prot_rec.seq[i:i+1]) for i in range(0,len(prot_rec.seq),1)]
         diaas = [str(prot_rec.seq[i:i+2]) for i in range(0,len(prot_rec.seq)-1,1)]
 
@@ -1860,7 +1870,14 @@ if 'CPB' in args.modules or 'all' in args.modules:
             #score = np.log(dicodons.count(cp) / ( ((codons.count(cod1) * codons.count(cod2)) / (aas.count(aa1) * aas.count(aa2))) * diaas.count(ap)))
             score = np.log(dicodon_counts[cp] / ( ((codon_counts[cod1] * codon_counts[cod2]) / (aa_counts[aa1] * aa_counts[aa2])) * diaa_counts[ap]))
             cps.append(score)
-        cpb = sum(cps)/len(cps)
+            dicodon_df = pandas.DataFrame.from_dict(dicodon_counts, orient='index').reset_index()
+            dicodon_df = dicodon_df.sort(['index'], ascending=[True])
+            dicodon_df.columns = ['CodonPair', 'Obs']
+            cps_tb_final = pandas.merge(cps_human, dicodon_df, on='CodonPair', how='inner')
+            cps_tb_final['CPS'] = cps_tb_final['CPS'].replace({',':'.'}, regex=True)
+            cps_tb_final['CPS'] = cps_tb_final['CPS'].astype(float)
+            cps_tb_final['result'] = cps_tb_final.CPS * cps_tb_final.Obs
+        cpb = sum(cps_tb_final['result'])/sum(cps_tb_final['Obs'])
         print str(cpb)
         cpb_file.write(str(cpb)+"\n")
     cpb_file.close()
