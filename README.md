@@ -18,7 +18,7 @@ ___
 
 Files and Folders:
 
-CodonShuffle.py
+* CodonShuffle.py
 
 Script to shuffle nucleotides and evaluate genomics features
 
@@ -117,15 +117,15 @@ Example Usage:
 
 $python CodonShuffle.py -i Poliovirus_1_Mahoney_P1.fas -s dn23 -r 100 -m CAI ENC CPB -g
 
-Coleman_CPS.csv
+* Coleman_CPS.csv
 
 Table with codon pair scores (CPS) for all 3721 possible codon pair combinations (excluding Stop codons) in the human ORFeome obtained from <a href="http://www.ncbi.nlm.nih.gov/pubmed/18583614" target="_blank">Coleman, et al, Science 2008</a>.  
 
-Poliovirus_1_Mahoney_P1.fas
+* Poliovirus_1_Mahoney_P1.fas
 
 Fasta sequence file of capsid region of Poliovirus 1 
 
-RNA_sliding_window.py
+* RNA_sliding_window.py
 
 Script to split selected sequence and compute minimum free energy. The splited sequence has 100 nucleotide and 80 overlap nucleotide. 
 
@@ -139,7 +139,7 @@ Example Usage:
 
 $python RNA_sliding_window.py -i Poliovirus_1_Mahoney_P1.fas -s Replicate_2 
 
-install_dependencies.py
+* install_dependencies.py
 
 Script to install python library, configure and make Emboss package. This commmand will require admim password.  
 
@@ -147,7 +147,7 @@ Example Usage:
 
 $sudo python install_dependencies.py
 
-Lib folders
+* Lib folders
 
 Folder with the software necessary in the analysis
 
