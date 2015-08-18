@@ -127,6 +127,17 @@ Fasta sequence file of capsid region of Poliovirus 1
 
 * RNA_sliding_window.py
 
+Input Commands:
+
+-i Input
+
+Fasta file (input_file.fas)
+
+-s Seleted sequence
+
+Name of selected sequence (use the the name after >)
+
+
 Script to split selected sequence and compute minimum free energy. The splited sequence has 100 nucleotide and 80 overlap nucleotide. 
 
 Outputs:
