@@ -1542,7 +1542,7 @@ for strain in names_list:
             outseq=third(outseq)
         elif args.random_type=='dn231':
             outseq=third(exchange6deg(outseq))
-        elif args.random_type=='3n':
+        elif args.random_type=='n3':
             outseq=third_simple(outseq)
         outfile.write('>replicate_'+str(i+1)+'\n'+outseq+'\n')
     outfile.close()
@@ -1551,7 +1551,7 @@ for strain in names_list:
 
 first_tot_out_string=`args.reps`+'_replicas\nstrain\t\tstrain_Nc\t'
 #if 'gc3'in types_of_rnd:first_tot_out_string+='\tmean_Nc_gc3\tsd\t'
-if '3n'in types_of_rnd:first_tot_out_string+='\tmean_Nc_3n\tsd\t'
+if 'n3'in types_of_rnd:first_tot_out_string+='\tmean_Nc_n3\tsd\t'
 if 'all'in types_of_rnd:first_tot_out_string+='\tmean_Nc_all\tsd\t'
 if 'dn23'in types_of_rnd:first_tot_out_string+='\tmean_Nc_dn23\tsd\t'
 if 'dn31'in types_of_rnd:first_tot_out_string+='\tmean_Nc_dn31\tsd\t'
