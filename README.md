@@ -120,7 +120,7 @@ $python CodonShuffle.py -i Poliovirus_1_Mahoney_P1.fas -s dn23 -r 100 -m CAI ENC
 
 ###Additional Files###
 
-* Coleman_CPS.csv: Table with codon pair scores (CPS) for all 3721 possible codon pair combinations (excluding Stop codons) in the human ORFeome obtained from <a href="http://www.ncbi.nlm.nih.gov/pubmed/18583614" target="_blank">Coleman, et al, Science 2008</a>.  
+* Coleman_CPS.csv: Table with codon pair scores (CPS) for all 3721 possible codon pair combinations (excluding Stop codons) in the human ORFeome obtained from <a href="http://www.ncbi.nlm.nih.gov/pubmed/18583614" target="_blank">Coleman, et al., Science 2008</a>.  
 
 * Poliovirus_1_Mahoney_P1.fas: Fasta sequence file of capsid region of Poliovirus 1 
 
