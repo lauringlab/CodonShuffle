@@ -144,7 +144,7 @@ Graph with sliding window
 
 Example Usage:
 
-$python RNA_sliding_window.py -i Poliovirus_1_Mahoney_P1.fas -s Replicate_2 
+$python RNA_sliding_window.py -i Poliovirus_1_Mahoney_P1_n3.fas -s Replicate_2 
 
 ### Required Third Party Resources and Installation###
 * Python (Package: Numpy, Scipy, Matplotlib, Pandas, Statsmodels, Patsy, Biopython, Pyfasta and Ggplot)
