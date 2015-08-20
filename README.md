@@ -116,32 +116,30 @@ Outputs:
 Example Usage:
 
 $python CodonShuffle.py -i Poliovirus_1_Mahoney_P1.fas -s dn23 -r 100 -m CAI ENC CPB -g
-___
+
 ###Additional Files###
 
 * Coleman_CPS.csv: Table with codon pair scores (CPS) for all 3721 possible codon pair combinations (excluding Stop codons) in the human ORFeome obtained from <a href="http://www.ncbi.nlm.nih.gov/pubmed/18583614" target="_blank">Coleman, et al, Science 2008</a>.  
 
 * Poliovirus_1_Mahoney_P1.fas: Fasta sequence file of capsid region of Poliovirus 1 
 
-___
-* RNA_sliding_window.py
+###Sliding Window Analysis of RNA Structure###
+
+The main CodonShuffle script uses VFOLD or UFOLD to analyze the minimum free energy of RNA folding across the entire sequence. As a more localized analysis may be also appropriate, we have also included a separate script, RNA_sliding_window.py, to perform a sliding window analysis (100 nucleotide windows, 80 nucleotides overlap) of RNA structures across a sequence. This can be run on either the input sequence or selected sequences from the CodonShuffle output files as follows:
 
 Input Commands:
 
 -i Input
 
-Fasta file (input_file.fas)
+Multisequence fasta file, typically the output from CodonShuffle (input_file.fas)
 
 -s Seleted sequence
 
-Name of selected sequence (use the the name after >)
-
-
-Script to split selected sequence and compute minimum free energy. The splited sequence has 100 nucleotide and 80 overlap nucleotide. 
+Name of selected sequence (use the the name after the ">" character in the fasta file)
 
 Outputs:
 
-File with splited Sequence 
+File with split sequence 
 
 Graph with sliding window 
 
@@ -149,19 +147,7 @@ Example Usage:
 
 $python RNA_sliding_window.py -i Poliovirus_1_Mahoney_P1.fas -s Replicate_2 
 
-* install_dependencies.py
-
-Script to install python library, configure and make Emboss package. This commmand will require admim password.  
-
-Example Usage:
-
-$sudo python install_dependencies.py
-
-* Lib folders
-
-Folder with the software necessary in the analysis
-
-### Required third-party resources ###
+### Required Third Party Resources and Installation###
 * Python (Package: Numpy, Scipy, Matplotlib, Pandas, Statsmodels, Patsy, Biopython, Pyfasta and Ggplot)
 * <a href="http://emboss.sourceforge.net/" target="_blank">Emboss</a>  
 * <a href="http://codonw.sourceforge.net/" target="_blank">Codonw</a> 
@@ -169,7 +155,7 @@ Folder with the software necessary in the analysis
 * <a href="http://www.tbi.univie.ac.at/RNA/" target="_blank">ViennaRNA</a> 
 * <a href="https://pip.pypa.io/en/latest/quickstart.html" target="_blank">Pip</a>
 
-All dependencies will be installed by first running the install script. Simply open a terminal window and from the parent directory, type "sudo python install_dependencies.py" You will be prompted to enter your administrator password. Once installed, you will be able to run CodonShuffle. Additional required dependencies (i.e. CodonW and Emboss are installed by the main CodonShuffle.py command).
+All dependencies will be installed by first running the install script. Simply open a terminal window and from the parent directory, type "sudo python install_dependencies.py" You will be prompted to enter your administrator password. Once installed, you will be able to run CodonShuffle. Additional required dependencies (i.e. CodonW and Emboss are installed by the main CodonShuffle.py command in the lib folder).
 
  
 
