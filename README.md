@@ -16,7 +16,6 @@ ___
 6. Select the genomic feature to be evaluated 
 7. Output graphs with the analysis
 
-Files and Folders:
 
 * CodonShuffle.py
 
@@ -133,7 +132,7 @@ Input Commands:
 
 Multisequence fasta file, typically the output from CodonShuffle (input_file.fas)
 
--s Seleted sequence
+-s Selected sequence
 
 Name of selected sequence (use the the name after the ">" character in the fasta file)
 
@@ -224,13 +223,3 @@ Quantifies the distribution of the codon pair in the sequence. CPB is defined as
 
 Nucleotide difference distance of the new sequence from the original sequence (wild type)
 
-
-___
-### Scripts for Graphing Results###
-
-CodonShuffle.py will generate output graphs if -g is selected. If the user wishes to generate these plots separately, the following scripts may be used:
-
-* _ENC_graph.R_ (for effective number of codons)
-* _Fold_graph.R_ (for free energy of RNA folding)
-* _Graph_(CAI).R_ (for codon adaptation index based on human usage)
-* _Hamming_Distance_Graph_(ggplot).R_ (for plotting Hamming distance versus least squares distance)
