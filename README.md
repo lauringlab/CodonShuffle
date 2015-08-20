@@ -38,7 +38,7 @@ Input Commands:
 
 -m Genomic feature(s) to be used
 
-* Specifies the genomic features incorporated into final least squares distance. Default is all. If only a subset are desired, the user must specify each: CAI, ENC, VFOLD, UFOLD, DN, CPB separated by spaces. Two options are given for assessing free energy of RNA folding as described below. UNAfold is more efficient, but only commercially available. ViennaRNA Fold is free. The user should specify which folding algorithm to use (if any) in the -m command.
+* Specifies the genomic features incorporated into final least squares distance. Default is all. If only a subset are desired, the user must specify each: CAI, ENC, VFOLD, UFOLD, DN, CPB separated by spaces. Two options are given for assessing free energy of RNA folding as described below. UNAfold (UFOLD) is more efficient, but only commercially available. ViennaRNA Fold (VFOLD) is free. The user should specify which folding algorithm to use (if any) in the -m command.
 
 -g Graphics
 
@@ -116,6 +116,8 @@ Outputs:
 Example Usage:
 
 $python CodonShuffle.py -i Poliovirus_1_Mahoney_P1.fas -s dn23 -r 100 -m CAI ENC CPB -g
+
+###Additional Files###
 
 * Coleman_CPS.csv
 
