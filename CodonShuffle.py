@@ -1621,7 +1621,7 @@ outnt_file.close()
 if args.graphics:
     hamming_graphname = filename+'.hamming.pdf'
     hamming_table = pandas.read_csv(filename+'.hamming', sep='\t', names=['distance'])
-    hamming_graph = ggplot(hamming_table, aes('distance'))+geom_density() +labs("Hamming distance","Frequency")+ geom_vline(xintercept = [hamming_table['distance'].iloc[0]] , colour="red", linetype = "dashed") +ggtitle(seq_name[1:-1]+'_'+args.random_type+' (Hamming)') #Get the name of the script
+    hamming_graph = ggplot(hamming_table, aes('distance'))+geom_density() +labs("Hamming distance","Frequency")+ggtitle(seq_name[1:-1]+'_'+args.random_type+' (Hamming)') #Get the name of the script
     ggsave(hamming_graph, hamming_graphname)
 
 if 'CAI' in args.modules or 'all' in args.modules:
@@ -1803,7 +1803,7 @@ if 'DN' in args.modules or 'all' in args.modules:
 
         #--bug in python ggplot for this, use rpy2 instead--
         dn_table_least = pandas.read_csv(dnlsname, sep='	', names=['Rep', 'DN']) 
-        dn_graph = ggplot(dn_table_least,aes('DN')) + geom_density() + xlab("dinucleotide") + ylab('Dinucleotide frequency')+ geom_vline(xintercept = [dn_table_least['DN'].iloc[0]] , colour="red", linetype = "dashed") +ggtitle(seq_name[1:-1]+'_'+args.random_type+' (DN)')
+        dn_graph = ggplot(dn_table_least,aes('DN')) + geom_density() + xlab("Dinucleotide") + ylab('Dinucleotide Least Squares')+ geom_vline(xintercept = [dn_table_least['DN'].iloc[0]] , colour="red", linetype = "dashed") +ggtitle(seq_name[1:-1]+'_'+args.random_type+' (DN)')
         ggsave(dn_graph, dnls_graphname)
         
         dn_table = pandas.read_csv(dnname, sep="	") 
