@@ -140,9 +140,13 @@ Name of selected sequence (use the the name after the ">" character in the fasta
 
 Outputs:
 
-File with split sequence 
+Fasta file of sequence analyzed (for example, seq_file.fas and seq_file.fas.flat)
 
-Graph with sliding window 
+File with sequences for each window (for example, seq_file.split.100mer.80overlap.fas)
+
+File with ViennaRNA folding output data (for example, seq_file.fold)
+
+Graph with sliding window (for example, Poliovirus_1_Mahoney_P1_n3_replicate_2_fold.pdf)
 
 Example Usage:
 
