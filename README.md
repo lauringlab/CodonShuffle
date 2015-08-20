@@ -111,6 +111,8 @@ Outputs:
     new_table_final_graph, tab delimited text file of least squares and Hamming distance for input and all permuted sequences
     
     .cai, codon adaptive index values for input and permuted sequences
+    
+    .fold, Vienna RNA output file for input and permuted sequences
 
 Example Usage:
 
