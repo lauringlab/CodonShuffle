@@ -1596,6 +1596,7 @@ filename = seq_name[1:-1]+'_'+args.random_type+'.fas'
 final_table=pandas.DataFrame()
 
 #Calculate Sequence distance
+print "Calculating Hamming distance"
 seq_records=[]
 
 inseq_file=open(filename,'rU')
@@ -1626,6 +1627,7 @@ if args.graphics:
 
 if 'CAI' in args.modules or 'all' in args.modules:
     #Run CAI and read result table
+    print "Calculating CAI"
     cainame = seq_name[1:-1]+'_'+args.random_type+'.cai'
     call(["./lib/EMBOSS-6.6.0/emboss/cai", "-seqall="+filename, "-outfile="+cainame, "-cfile=Ehuman.cut"]) #Insert path before cai in this line (CAI)
     u_cols = ['a', 'sequence', 'b', 'cai']
@@ -1633,7 +1635,9 @@ if 'CAI' in args.modules or 'all' in args.modules:
     cai_table = cai_table.drop('a', 1)
     cai_table = cai_table.drop('b', 1)
     cai_table_z =  ((cai_table['cai'] - cai_table['cai'].mean()) / cai_table['cai'].std())
-    cai_table_z_ls = (cai_table_z-cai_table_z[0])**2
+    cai_table_wt_z = cai_table_z.iloc[0]
+    cai_table_wt_z_rep = np.repeat(cai_table_wt_z, len(cai_table_z))
+    cai_table_z_ls = (cai_table_wt_z_rep-cai_table_z)**2
 
     least_squares = least_squares.add(cai_table_z_ls, axis=0)
 #    final_table=final_table.append(cai_table['cai'])
@@ -1651,12 +1655,15 @@ if 'CAI' in args.modules or 'all' in args.modules:
 
 if 'ENC' in args.modules or 'all' in args.modules:
     #  Run ENC and result table
+    print "Calculating ENC"
     call(["./lib/codonW/codonw", filename, "-enc", "-nomenu", "-nowarn", "-silent"]) #Insert path before codonw in this line (ENC)
     enc_filename = seq_name[1:-1]+'_'+args.random_type+'.out'
     enc_table = pandas.read_csv(enc_filename, sep='\t')
     enc_table = enc_table.drop('Unnamed: 2',1)
     enc_table_z =  ((enc_table['Nc'] - enc_table['Nc'].mean()) / enc_table['Nc'].std())
-    enc_table_z_ls = (enc_table_z-enc_table_z[0])**2
+    enc_table_wt_z = enc_table_z.iloc[0]
+    enc_table_wt_z_rep = np.repeat(enc_table_wt_z, len(enc_table_z))
+    enc_table_z_ls = (enc_table_wt_z_rep-enc_table_z)**2
     
     least_squares = least_squares.add(enc_table_z_ls, axis=0)
 #    final_table=final_table.append(enc_table['Nc'])
@@ -1673,6 +1680,7 @@ if 'ENC' in args.modules or 'all' in args.modules:
 
 if 'VFOLD' in args.modules or 'all' in args.modules:
 #Read FOLD (minimum free energy) table
+    print "Calculating VFOLD"
     foldname = seq_name[1:-1]+'_'+args.random_type+'.fold'
     mfename = seq_name[1:-1]+'_'+args.random_type+'.mfe'
     i = open(filename, "r")
@@ -1693,7 +1701,9 @@ if 'VFOLD' in args.modules or 'all' in args.modules:
     fold_table['mfe'] = fold_table['mfe'].map(lambda x: x.lstrip('(').rstrip(')'))
     fold_table['mfe']=fold_table.apply(lambda row: float(row['mfe']), axis=1)
     fold_table_z = ((fold_table['mfe'] - fold_table['mfe'].mean()) / fold_table['mfe'].std())
-    fold_table_z_ls = (fold_table_z-fold_table_z[0])**2
+    fold_table_wt_z = fold_table_z.iloc[0]
+    fold_table_wt_z_rep = np.repeat(fold_table_wt_z, len(fold_table_z))
+    fold_table_z_ls = (fold_table_wt_z_rep-fold_table_z)**2
 
     least_squares = least_squares.add(fold_table_z_ls, axis=0)
 #    final_table=final_table.append(fold_table['mfe'])
@@ -1708,6 +1718,7 @@ if 'VFOLD' in args.modules or 'all' in args.modules:
 
 if 'UFOLD' in args.modules:
 #Read FOLD (minimum free energy) table
+    print "Calculating UFOLD"
     foldname = seq_name[1:-1]+'_'+args.random_type+'.fold'
     mfename = seq_name[1:-1]+'_'+args.random_type+'.fasta.dG'
     i = open(filename, "r")
@@ -1719,7 +1730,9 @@ if 'UFOLD' in args.modules:
     
     ufold_table = pandas.read_csv(mfename, sep='	')
     ufold_table_z =  ((fold_table['-RT ln Z'] - fold_table['-RT ln Z'].mean()) / fold_table['-RT ln Z'].std())
-    ufold_table_z_ls = (fold_table_z-fold_table_z[0])**2
+    ufold_table_wt_z = ufold_table_z.iloc[0]
+    ufold_table_wt_z_rep = np.repeat(ufold_table_wt_z, len(ufold_table_z))
+    ufold_table_z_ls = (fold_table_wt_z_rep-fold_table_z)**2
 
     least_squares = least_squares.add(fold_table_z_ls, axis=0)
 #    final_table=final_table.append(ufold_table['-RT ln Z'])
@@ -1733,6 +1746,7 @@ if 'UFOLD' in args.modules:
 
 
 if 'DN' in args.modules or 'all' in args.modules:
+    print "Calculating DN"
     dnname = seq_name[1:-1]+'_'+args.random_type+'.dn'
     dn_file=open(dnname, 'w')
        
@@ -1767,12 +1781,47 @@ if 'DN' in args.modules or 'all' in args.modules:
     dnlsname = seq_name[1:- 1]+'_'+args.random_type+'.dnls'
 #    dn_least_file=open(dnlsname, 'w')
     dn_table = pandas.read_csv(dnname, sep='	')
-    dn_table_least = np.sqrt((dn_table['AA']-dn_table.iloc[0,1])**2+(dn_table['AC']-dn_table.iloc[0,2])**2+(dn_table['AG']-dn_table.iloc[0,3])**2+(dn_table['AT']-dn_table.iloc[0,4])**2+(dn_table['CA']-dn_table.iloc[0,5])**2+(dn_table['CC']-dn_table.iloc[0,6])**2+(dn_table['CG']-dn_table.iloc[0,7])**2+(dn_table['CT']-dn_table.iloc[0,8])**2+(dn_table['GA']-dn_table.iloc[0,9])**2+(dn_table['GC']-dn_table.iloc[0,10])**2+(dn_table['GG']-dn_table.iloc[0,11])**2+(dn_table['GT']-dn_table.iloc[0,12])**2+(dn_table['TA']-dn_table.iloc[0,13])**2+(dn_table['TC']-dn_table.iloc[0,14])**2+(dn_table['TG']-dn_table.iloc[0,15])**2+(dn_table['TT']-dn_table.iloc[0,16])**2)
+    dn_table_AA_wt = dn_table.iloc[0,1]
+    dn_table_AA_wt_rep = np.repeat(dn_table_AA_wt, len(dn_table['AA']))
+    dn_table_AC_wt = dn_table.iloc[0,2]
+    dn_table_AC_wt_rep = np.repeat(dn_table_AC_wt, len(dn_table['AC']))
+    dn_table_AG_wt = dn_table.iloc[0,3]
+    dn_table_AG_wt_rep = np.repeat(dn_table_AG_wt, len(dn_table['AG']))
+    dn_table_AT_wt = dn_table.iloc[0,4]
+    dn_table_AT_wt_rep = np.repeat(dn_table_AT_wt, len(dn_table['AT']))
+    dn_table_CA_wt = dn_table.iloc[0,5]
+    dn_table_CA_wt_rep = np.repeat(dn_table_CA_wt, len(dn_table['CA']))
+    dn_table_CC_wt = dn_table.iloc[0,6]
+    dn_table_CC_wt_rep = np.repeat(dn_table_CC_wt, len(dn_table['CC']))
+    dn_table_CG_wt = dn_table.iloc[0,7]
+    dn_table_CG_wt_rep = np.repeat(dn_table_CG_wt, len(dn_table['CG']))
+    dn_table_CT_wt = dn_table.iloc[0,8]
+    dn_table_CT_wt_rep = np.repeat(dn_table_CT_wt, len(dn_table['CT']))
+    dn_table_GA_wt = dn_table.iloc[0,9]
+    dn_table_GA_wt_rep = np.repeat(dn_table_GA_wt, len(dn_table['GA']))
+    dn_table_GC_wt = dn_table.iloc[0,10]
+    dn_table_GC_wt_rep = np.repeat(dn_table_GC_wt, len(dn_table['GC']))
+    dn_table_GG_wt = dn_table.iloc[0,11]
+    dn_table_GG_wt_rep = np.repeat(dn_table_GG_wt, len(dn_table['GG']))
+    dn_table_GT_wt = dn_table.iloc[0,12]
+    dn_table_GT_wt_rep = np.repeat(dn_table_GT_wt, len(dn_table['GT']))
+    dn_table_TA_wt = dn_table.iloc[0,13]
+    dn_table_TA_wt_rep = np.repeat(dn_table_TA_wt, len(dn_table['TA']))
+    dn_table_TC_wt = dn_table.iloc[0,14]
+    dn_table_TC_wt_rep = np.repeat(dn_table_TC_wt, len(dn_table['TC']))
+    dn_table_TG_wt = dn_table.iloc[0,15]
+    dn_table_TG_wt_rep = np.repeat(dn_table_TG_wt, len(dn_table['TG']))
+    dn_table_TT_wt = dn_table.iloc[0,16]
+    dn_table_TT_wt_rep = np.repeat(dn_table_TT_wt, len(dn_table['TT']))
+    
+    dn_table_least = np.sqrt((dn_table_AA_wt_rep-dn_table['AA'])**2+(dn_table_AC_wt_rep-dn_table['AC'])**2+(dn_table_AG_wt_rep-dn_table['AG'])**2+(dn_table_AT_wt_rep-dn_table['AT'])**2+(dn_table_CA_wt_rep-dn_table['CA'])**2+(dn_table_CC_wt_rep-dn_table['CC'])**2+(dn_table_CG_wt_rep-dn_table['CG'])**2+(dn_table_CT_wt_rep-dn_table['CT'])**2+(dn_table_GA_wt_rep-dn_table['GA'])**2+(dn_table_GC_wt_rep-dn_table['GC'])**2+(dn_table_GG_wt_rep-dn_table['GG'])**2+(dn_table_GT_wt_rep-dn_table['GT'])**2+(dn_table_TA_wt_rep-dn_table['TA'])**2+(dn_table_TC_wt_rep-dn_table['TC'])**2+(dn_table_TG_wt_rep-dn_table['TG'])**2+(dn_table_TT_wt_rep-dn_table['TT'])**2)
     dn_table_least.to_csv(dnlsname, sep="\t")
 #    dn_least_file.write(dn_table_least)
 #    dn_least_file.close()
     dn_table_least_z =  ((dn_table_least - dn_table_least.mean()) / dn_table_least.std())
-    dn_table_least_z_ls = (dn_table_least_z-dn_table_least_z[0])**2
+    dn_table_least_z_wt = dn_table_least_z.iloc[0]
+    dn_table_least_z_wt_rep = np.repeat(dn_table_least_z_wt, len(dn_table_least_z))
+    dn_table_least_z_ls = (dn_table_least_z_wt_rep-dn_table_least_z)**2
 
     
     least_squares = least_squares.add(dn_table_least_z_ls, axis=0)
@@ -1833,6 +1882,7 @@ if 'CPB' in args.modules or 'all' in args.modules:
     #                 SeqIO.parse(filename, "fasta")))
     #SeqIO.write(proteins, filename+"_prot", "fasta")
     
+    print "Calculating CPB"
     cpbname = seq_name[1:-1]+'_'+args.random_type+'.cpb'
     cpb_file=open(cpbname,'w')
     
@@ -1885,7 +1935,9 @@ if 'CPB' in args.modules or 'all' in args.modules:
     u_cols = ['cpb']
     cpb_table = pandas.read_csv(cpbname, sep=' ', names=u_cols)
     cpb_table_z =  ((cpb_table['cpb'] - cpb_table['cpb'].mean()) / cpb_table['cpb'].std())
-    cpb_table_z_ls = (cpb_table_z-cpb_table_z[0])**2
+    cpb_table_wt_z = cpb_table_z.iloc[0]
+    cpb_table_wt_z_rep = np.repeat(cpb_table_wt_z, len(cpb_table_z))
+    cpb_table_z_ls = (cpb_table_wt_z_rep-cpb_table_z)**2
     
     least_squares = least_squares.add(cpb_table_z_ls, axis=0)
 #    final_table=final_table.append(cpb_table['cpb'])
@@ -1901,6 +1953,7 @@ if 'CPB' in args.modules or 'all' in args.modules:
 
 #Calculation least square
 
+print "Calculating Least Squares"
 least_squares = np.sqrt(least_squares)
 least_squares.columns = ['distance']
 
@@ -1916,6 +1969,7 @@ final_table.insert(0, "Distance(ls)", least_squares['distance'])
 
 # Create final graph and table 
 
+print "Making final table"
 nuc_distance_name=filename+'_distance_table.txt'
 nuc_distance_file=open(nuc_distance_name,'w')
 nuc_distance_table = np.zeros((n,n))
