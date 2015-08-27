@@ -16,7 +16,6 @@ ___
 6. Select the genomic feature to be evaluated 
 7. Output graphs with the analysis
 
-
 * CodonShuffle.py
 
 Script to shuffle nucleotides and evaluate genomics features
