@@ -10,7 +10,7 @@ ___
 1. Download files and folders
 2. Install dependencies by running the install_dependencies.py script
 3. Run the python file (CodonShuffle.py)
-4. Select sequence file (input_file.fas)  
+4. Select sequence file (input_file.fas)
 5. Select a single permutation script to use (3n, dn23, dn31, dn231)
 6. Select desired number of permuted sequences
 7. Select the genomic feature to be evaluated 
