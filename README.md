@@ -15,7 +15,6 @@ ___
 6. Select desired number of permuted sequences
 7. Select the genomic feature to be evaluated
 
-
 * CodonShuffle.py
 
 Script to shuffle nucleotides and evaluate genomics features
