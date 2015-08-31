@@ -167,7 +167,7 @@ All dependencies will be installed by first running the install script using Pip
 ___
 ### Scripts for shuffling ###
 
-The first step in the process is to generate permuted versions of the input sequence. Four different scripts are used, which shuffle the codons within an open reading frame, largely preserving the codon usage within the original sequence. The end result is a set of permuted sequences with a large number of synonymous mutations. Up to four different scripts can be used in the permutation step. They are based on scripts described in [Belalov and Lukashev, PLoS ONE 2013](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0056642). A fifth script described in this paper was not used as it will also change the GC content of the sequence. These are all now located within the main CodonShuffle.py script.
+The first step in the process is to generate permuted versions of the input sequence. Four different scripts are used, which shuffle the codons within an open reading frame, largely preserving the codon usage within the original sequence. The end result is a set of permuted sequences with a large number of synonymous mutations. Up to four different scripts can be used in the permutation step. They are based on scripts described in <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0056642" target="_blank">Belalov and Lukashev, PLoS ONE 2013</a>. A fifth script described in this paper was not used as it will also change the GC content of the sequence. These are all now located within the main CodonShuffle.py script.
 
 #####N3 
 Shuffles the third position of each codon throughout a sequence.
