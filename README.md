@@ -8,7 +8,7 @@ ___
 ###Instructions###
 
 1. Download files and folders
-2. Check software requiremnts
+2. Check software requirements
 3. Install dependencies by running the install_dependencies.py script
 4. Run the python file (CodonShuffle.py)
 5. Select sequence file in frame (input_file.fas)
