@@ -12,7 +12,7 @@ import sys
 import argparse
 import matplotlib.pyplot as plt
 
-from random import shuffle,random,randint,choice
+from random import shuffle,random,randint,choice,seed
 from collections import Counter
 from os import system
 from pandas import DataFrame
@@ -1493,7 +1493,11 @@ parser.add_argument('-s', choices=['dn23', 'dn31', 'dn231', 'n3'], nargs='?', he
 parser.add_argument('-r', nargs='?', help='Number of replications (int)', default='1000', dest="reps", type=int)
 parser.add_argument('-m', choices=['CAI', 'CPB', 'DN', 'ENC', 'VFOLD', 'UFOLD', 'all'], nargs='*', help='Control Features [select one, multiple, or all]', default='all', dest="modules")
 parser.add_argument('-g', dest="graphics", help='Generate Feature Plots', action="store_true")
+parser.add_argument('--seed', type=int, nargs='?', dest='randomseed', help='Optional integer for random seed', const=99)
 args = parser.parse_args()
+
+if args.randomseed is not None:
+    seed(args.randomseed)
 
 types_of_rnd=args.random_type
 
@@ -1516,7 +1520,7 @@ out_names=[]
 for strain in names_list:
     seq_name=''
     for liter in strain:
-        if liter =='\\' or liter =='/' or liter ==' ' or liter =='-' or liter ==',' or liter=='|': #replacing non-DOS chars in sequence names
+        if liter =='\\' or liter =='/' or liter ==' ' or liter =='-' or liter ==',' or liter=='|' or liter==':': # compatible file names
             seq_name+='_'
         else:
             seq_name+=liter

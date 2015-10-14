@@ -42,6 +42,10 @@ Input Commands:
 
 * When selected, CodonShuffle.py will generate graphs of distributions of values for all genomic features
 
+--seed Random seed
+
+* Allows for use of a random seed.
+
 -h Help
 
 * Help menu
