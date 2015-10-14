@@ -11,6 +11,7 @@ import patsy
 import sys
 import argparse
 import matplotlib.pyplot as plt
+import re
 
 from random import shuffle,random,randint,choice,seed
 from collections import Counter
@@ -1693,6 +1694,13 @@ if 'VFOLD' in args.modules or 'all' in args.modules:
     i.close
     o.close
 #    os.system("cat Poliovirus_1_Mahoney_P1_dn23.fold | sed 'N;N;s/\\n/ /g' | cut -f 4 -d ' ' | tr -d '()' > " + mfename)
+
+    # handle small energies by removing whitespace
+    with open(foldname, 'r') as sources:
+        lines = sources.readlines()
+    with open(foldname, 'w') as sources:
+        for line in lines:
+            sources.write(re.sub('[(] +-', '(-', line))
 
     fold_tb = open(foldname, "r").read().split()
     fold_file=open(filename+'fold_table_mfe.txt', 'w')
