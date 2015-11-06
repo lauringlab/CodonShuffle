@@ -6,7 +6,8 @@ This package can be used to generate and analyze permuted sequences of an open r
 
 For more information about the package or How to cite CodonShuffle package access:
 
-* <a href="http://dx.doi.org/10.1093/ve/vev012" target="_blank">http://dx.doi.org/10.1093/ve/vev012</a>
+* <a href="http://dx.doi.org/10.1093/ve/vev012" target="_blank">CodonShuffle: a tool for generating and analyzing synonymously mutated sequences</a>
+
 
 ___
 ###Instructions###
