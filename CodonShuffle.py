@@ -1930,7 +1930,12 @@ if 'CPB' in args.modules or 'all' in args.modules:
             aa2 = tt[cod2].split('|')[0]
             ap = aa1+aa2
             #score = np.log(dicodons.count(cp) / ( ((codons.count(cod1) * codons.count(cod2)) / (aas.count(aa1) * aas.count(aa2))) * diaas.count(ap)))
-            score = np.log(dicodon_counts[cp] / ( ((codon_counts[cod1] * codon_counts[cod2]) / (aa_counts[aa1] * aa_counts[aa2])) * diaa_counts[ap]))
+            #score = np.log(dicodon_counts[cp] / ( ((codon_counts[cod1] * codon_counts[cod2]) / (aa_counts[aa1] * aa_counts[aa2])) * diaa_counts[ap]))
+            numerator_cps = dicodon_counts[cp]
+            denominator_cps = ((codon_counts[cod1] * codon_counts[cod2]) / (aa_counts[aa1] * aa_counts[aa2])) * diaa_counts[ap]
+            with np.errstate(divide='ignore', invalid='ignore'):
+                div_cps = np.true_divide(numerator_cps,denominator_cps)
+                score = np.log(div_cps)
             cps.append(score)
             dicodon_df = pandas.DataFrame.from_dict(dicodon_counts, orient='index').reset_index()
             dicodon_df = dicodon_df.sort(['index'], ascending=[True])
